@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://bswrb4cj7opvv"]
+
+[ext_resource type="Script" uid="uid://b78fvte3a8d7e" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Theme" uid="uid://cedc28jnedofy" path="res://assets/Theme/Button.theme" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://0yx3h33bcfh7" path="res://assets/characters/bot.png" id="2_ekxnf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+
+[sub_resource type="Theme" id="Theme_bqqt6"]
+/styles/normal = SubResource("StyleBoxFlat_wu84c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.385463, 0.664872, 0.57571, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 250.0
+offset_right = -100.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bqqt6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ln24")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Player Skin"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="SkinButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 50
+text = "←"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+texture = ExtResource("2_ekxnf")
+stretch_mode = 5
+
+[node name="SkinButton2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 45
+text = "→"
+
+[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 50
+text = "Start Game"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SkinButton" to="." method="_on_skin_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SkinButton2" to="." method="_on_skin_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://i67x64l8dn18"]
+
+[ext_resource type="Texture2D" uid="uid://di1k8fv1j3dh8" path="res://assets/platforms/hay.png" id="1_h6gs4"]
+[ext_resource type="Script" uid="uid://c5vhejobv3irm" path="res://scripts/trap_platform.gd" id="1_pe83v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe83v"]
+size = Vector2(186, 80)
+
+[node name="TrapPlatform" type="StaticBody2D" groups=["TrapPlatform"]]
+script = ExtResource("1_pe83v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_pe83v")
+one_way_collision = true
+
+[node name="Hay" type="Sprite2D" parent="."]
+texture = ExtResource("1_h6gs4")
